@@ -1,0 +1,176 @@
+/*--------------------------------------------- */
+/* Seção Hero */
+.hero {
+    position: relative;
+    flex-grow: 1;
+    background-image: url('../picture-movie/img/project/doação-de-comida.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 1rem;
+    color: #fef4e6;
+    min-height: 68vh;
+    box-shadow: inset 0 0 0 1000px rgba(68, 46, 23, 0.467);
+}
+
+.conteudo-hero {
+    max-width: 470px;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.46);
+}
+
+.conteudo-hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.4rem;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.conteudo-hero p {
+    margin-bottom: 1.3rem;
+    font-size: 1rem;
+    font-weight: 400;
+    opacity: 0.85;
+}
+
+/* Botão do Hero */
+.botao-hero {
+    background-color: #fef4e6;
+    border: none;
+    padding: 0.5rem 1.25rem;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    color: #3b2e2e;
+    border-radius: 0.25rem;
+    transition: background-color 0.25s ease;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+}
+
+.botao-hero:hover {
+    background-color: #e7dac8;
+}
+
+/*--------------------------------------------- */
+:root {
+    --maxw: 1200px;
+}
+
+.container {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 40px 16px 64px;
+    text-align: center;
+}
+
+.heading {
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+    font-weight: 800;
+    font-size: clamp(28px, 4vw, 38px);
+}
+
+.subheading {
+    font-size: clamp(14px, 2.2vw, 20px);
+    color: #222;
+    margin: 6px auto 34px;
+    max-width: 980px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: clamp(24px, 3vw, 36px);
+    align-items: start;
+    justify-items: center;
+}
+
+@media (min-width: 900px) {
+    .grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.item {
+    width: 100%;
+    max-width: 420px;
+}
+
+.photo-wrap {
+    width: 100%;
+    display: grid;
+    place-items: center;
+    margin: 0 auto;
+    aspect-ratio: 1/1;
+}
+
+.photo {
+    max-width: 420px;
+    width: min(100%, 420px);
+    height: auto;
+    display: block;
+    object-fit: contain;
+    transition: transform .25s ease;
+    will-change: transform;
+}
+
+.item:hover .photo {
+    transform: scale(1.02);
+}
+
+.title {
+    margin: 22px 0 12px;
+    font-weight: 800;
+    letter-spacing: .5px;
+    font-size: clamp(16px, 2.2vw, 22px);
+}
+
+.desc {
+    margin: 0 auto 8px;
+    max-width: 540px;
+    line-height: 1.5;
+    font-size: clamp(14px, 2vw, 20px);
+    color: #222;
+}
+
+.price {
+    margin-top: 14px;
+    font-weight: 700;
+    letter-spacing: .5px;
+    font-size: clamp(16px, 2.2vw, 22px);
+}
+
+.btn-add {
+  background-color: #3b2e2e;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  width: 100%;
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.btn-add:hover {
+  background-color: #231b1b;
+}
+
+/* Catalog controls share the site's original palette. */
+#catalogo {scroll-margin-top:90px;}
+.catalog-note {color:#63544c;margin:-18px auto 32px;max-width:600px;line-height:1.6;}
+.item {display:flex;flex-direction:column;height:100%;padding:20px;border:1px solid #dfd2c2;border-radius:10px;}
+.photo-wrap {height:230px;aspect-ratio:auto;}
+.photo {max-height:230px;width:100%;object-fit:contain;}
+.desc {font-size:1rem;}.stock-info{font-size:.9rem;margin:8px 0 16px;color:#63544c;}
+.add-form {margin-top:auto;display:grid;grid-template-columns:1fr 72px;align-items:center;gap:8px;text-align:left;}
+.qty-input {background:#fffaf3;border:1px solid #a69786;border-radius:5px;padding:8px;width:72px;text-align:center;}
+.btn-add {grid-column:1/-1;min-height:44px;}
+.btn-add:disabled {background:#a3988b;cursor:not-allowed;}
+.catalog-empty {grid-column:1/-1;padding:32px;}.catalog-empty a{text-decoration:underline;}
+@media(min-width:600px) and (max-width:899px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));}}

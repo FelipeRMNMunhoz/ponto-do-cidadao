@@ -1,0 +1,84 @@
+{% extends "base.html" %} {% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/quemsomos.css') }}"
+/>
+
+<section id="hero">
+  <img
+    src="{{ url_for('static', filename='picture-movie/img/about/projeto-1.jpg') }}"
+    alt="Equipe unida em projeto ambiental"
+    class="hero-image"
+  />
+</section>
+
+<section id="about-us">
+  <h2>Quem Somos</h2>
+  <p>
+    Somos um grupo formado por seis pessoas unidas por um mesmo propósito:
+    aprender, crescer e transformar ideias em realidade. Cada integrante do
+    grupo traz consigo uma bagagem única de experiências, talentos e visões de
+    mundo que, quando somadas, se transformam em uma força criativa e
+    colaborativa capaz de gerar impacto positivo.
+  </p>
+  <p>
+    Acreditamos que o conhecimento é uma construção coletiva — e é essa crença
+    que nos move. Trabalhamos de forma integrada, aprendendo uns com os outros e
+    valorizando a diversidade de pensamentos. Juntos, combinamos criatividade,
+    técnica, disciplina e inovação para desenvolver projetos que realmente façam
+    a diferença, tanto no campo acadêmico quanto social.
+  </p>
+  <p>
+    Nosso grupo nasceu da vontade de ir além das salas de aula: queremos aplicar
+    o que aprendemos em iniciativas reais, que inspirem outras pessoas e deixem
+    uma contribuição concreta para a comunidade. Acreditamos que cada desafio é
+    uma oportunidade de crescimento, e que com empatia, comprometimento e
+    trabalho em equipe, é possível transformar pequenas ideias em grandes
+    realizações.
+  </p>
+</section>
+
+<section id="cta">
+  <h3>
+    Pequenas ações geram grandes transformações. Vamos construir esse futuro
+    juntos.
+  </h3>
+</section>
+
+<section id="mission-vision">
+  <div class="mission">
+    <h4>Nossa Missão</h4>
+    <p>
+      Nossa missão é unir pessoas, conhecimento e tecnologia em prol de causas
+      que gerem impacto positivo. Buscamos desenvolver projetos sustentáveis e
+      educativos que promovam conscientização, inclusão e responsabilidade
+      social. Acreditamos que pequenas ações, quando somadas, têm o poder de
+      transformar o ambiente ao nosso redor — seja limpando uma praia, apoiando
+      uma comunidade local ou inspirando uma nova geração de agentes de mudança.
+    </p>
+    <p>
+      Trabalhamos para criar soluções práticas e acessíveis que contribuam para
+      um mundo mais equilibrado e humano, sempre guiados por valores como ética,
+      colaboração e respeito pela natureza e pelas pessoas.
+    </p>
+  </div>
+
+  <div class="vision">
+    <h4>Nossa Visão</h4>
+    <p>
+      Sonhamos com um futuro em que o desenvolvimento e a sustentabilidade
+      caminhem lado a lado. Nossa visão é ser reconhecidos como um grupo que faz
+      a diferença — não apenas pelos resultados que entrega, mas pela forma como
+      inspira e mobiliza outros a agir com consciência e propósito.
+    </p>
+    <p>
+      Queremos viver em um mundo onde a educação, a tecnologia e o engajamento
+      social sejam ferramentas de transformação real. Um mundo onde as pessoas
+      compreendam seu papel na preservação do planeta e atuem juntas pela
+      construção de um futuro mais justo, limpo e solidário.
+    </p>
+  </div>
+</section>
+
+{% endblock %}

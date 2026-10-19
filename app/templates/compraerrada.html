@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container text-center mt-5">
+  <h2>❌ Ocorreu um erro no pagamento.</h2>
+  <p>Tente novamente ou entre em contato conosco.</p>
+  <a href="{{ url_for('main.cart_partial') }}" class="btn btn-danger mt-3">Voltar ao carrinho</a>
+</div>
+{% endblock %}

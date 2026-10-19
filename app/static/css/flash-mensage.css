@@ -1,0 +1,52 @@
+/* Container fixo no canto superior direito */
+#flash-container {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+}
+
+/* Estilo base das mensagens */
+.flash-message {
+    visibility: hidden;      /* impede o flash gigante antes do JS */
+    opacity: 0;              /* começa invisível */
+    transform: translateY(-10px);
+
+    padding: 12px 18px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: sans-serif;
+
+    color: #fff;
+    min-width: 260px;
+
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: all 0.4s ease;
+}
+
+/* Categorias */
+.flash-message.success {
+    background: #28a745;
+}
+
+.flash-message.error,
+.flash-message.danger {
+    background: #dc3545;
+}
+
+.flash-message.warning {
+    background: #ffc107;
+    color: #000;
+}
+
+.flash-message.info {
+    background: #17a2b8;
+}
+
+/* Quando aparece */
+.flash-message.show {
+    visibility: visible;   /* agora aparece */
+    opacity: 1;
+    transform: translateY(0);
+}

@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ponto do Cidadão</title>
+
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- CSS customizado -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/base.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/flash-mensage.css') }}"
+    />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/cart.css') }}">
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+</head>
+
+  <body>
+    <div id="flash-container"></div>
+
+    {% with messages = get_flashed_messages(with_categories=True) %} {% if
+    messages %} {% for category, message in messages %}
+    <div class="flash-message {{ category }}">{{ message }}</div>
+    {% endfor %} {% endif %} {% endwith %}
+
+    <header aria-label="Navegação principal do site">
+      <button
+        aria-label="Abrir menu"
+        class="botao-hamburguer"
+        id="botaoMenu"
+        aria-haspopup="true"
+        aria-controls="menuMobile"
+        aria-expanded="false"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+
+      <a href="/" class="fonte-marca" style="user-select: none">
+        Ponto do Cidadão
+      </a>
+
+      <!-- ✅ Carrinho mobile corrigido -->
+      <a
+        href="#"
+        class="icone-carrinho cart-mobile open-cart"
+        tabindex="0"
+        role="button"
+        aria-label="Carrinho de compras"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          stroke="currentColor"
+          class="w-6 h-6"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383
+           1.437m0 0L6.75 14.25h10.5l2.25-7.5H5.106m0
+           0L4.5 6.75m2.25 12a.75.75 0 11-1.5 0
+           .75.75 0 011.5 0zm12 0a.75.75 0 11-1.5 0
+           .75.75 0 011.5 0z"
+          />
+        </svg><span class="cart-badge" data-cart-count aria-hidden="true">{{ cart_quantity }}</span>
+      </a>
+
+      <style>
+        /* Por padrão, o carrinho móvel fica oculto */
+        .cart-mobile {
+          display: none;
+        }
+
+        /* Mostra o carrinho apenas em telas menores que 1024px */
+        @media (max-width: 1024px) {
+          .cart-mobile {
+            display: inline-block;
+          }
+        }
+
+        /* Garante que ele suma novamente em telas maiores que 1024px */
+        @media (min-width: 1025px) {
+          .cart-mobile {
+            display: none !important;
+          }
+        }
+      </style>
+
+      <nav
+        class="nav-desktop"
+        role="navigation"
+        aria-label="Navegação principal"
+      >
+        <a
+          href="/"
+          class="link-nav {% if pagina_ativa == 'home' %}ativo{% endif %}"
+          >Início</a
+        >
+        <a
+          href="/doacoes"
+          class="link-nav {% if pagina_ativa == 'doacoes' %}ativo{% endif %}"
+          >Doações</a
+        >
+        <a
+          href="/projetos"
+          class="link-nav {% if pagina_ativa == 'projetos' %}ativo{% endif %}"
+          >Projetos</a
+        >
+        <a
+          href="/QuemSomos"
+          class="link-nav {% if pagina_ativa == 'quemsomos' %}ativo{% endif %}"
+          >Quem Somos</a
+        >
+      </nav>
+
+      <div
+        class="area-direita-header"
+        role="region"
+        aria-label="Ações do usuário"
+      >
+        <!-- ✅ Carrinho desktop corrigido -->
+        <a
+          href="#"
+          class="icone-carrinho open-cart"
+          tabindex="0"
+          role="button"
+          aria-label="Carrinho de compras"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="2"
+            stroke="currentColor"
+            class="w-6 h-6"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383
+                 1.437m0 0L6.75 14.25h10.5l2.25-7.5H5.106m0
+                 0L4.5 6.75m2.25 12a.75.75 0 11-1.5 0
+                 .75.75 0 011.5 0zm12 0a.75.75 0 11-1.5 0
+                 .75.75 0 011.5 0z"
+            />
+          </svg><span class="cart-badge" data-cart-count aria-hidden="true">{{ cart_quantity }}</span>
+        </a>
+
+        <div class="icone-login" tabindex="0" role="button" aria-label="Entrar">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+            class="w-6 h-6"
+          >
+            <path
+              d="M12 12c2.209 0 4-1.791 4-4s-1.791-4-4-4-4
+                     1.791-4 4 1.791 4 4 4zm0 2c-2.67 0-8
+                     1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+            />
+          </svg>
+          {% if conta %}
+          <p>Bem-vindo, {{ conta.nome.split(' ')[0] }}</p>
+          <a
+            href="#" data-logout
+            class="icone-login"
+            title="Sair"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9"
+              />
+            </svg>
+          </a>
+          {% else %}
+          <a href="{{ url_for('main.login') }}">Entrar</a>
+          {% endif %}
+        </div>
+      </div>
+    </header>
+
+    <div
+      role="dialog"
+      aria-modal="true"
+      id="menuMobile"
+      aria-label="Menu principal"
+      hidden
+    >
+      <div class="sobreposicao">
+        <button
+          class="botao-fechar"
+          aria-label="Fechar menu"
+          id="botaoFecharMenu"
+        >
+          &times;
+        </button>
+
+        <nav
+          class="nav-sobreposicao"
+          role="navigation"
+          aria-label="Navegação móvel"
+        >
+          <a
+            href="/"
+            class="link-nav {% if pagina_ativa == 'home' %}ativo{% endif %}"
+            >Início</a
+          >
+          <a
+            href="/doacoes"
+            class="link-nav {% if pagina_ativa == 'doacoes' %}ativo{% endif %}"
+            >Doações</a
+          >
+
+          <a
+            href="/projetos"
+            class="link-nav {% if pagina_ativa == 'projetos' %}ativo{% endif %}"
+            >Projetos</a
+          >
+          <a
+            href="/QuemSomos"
+            class="link-nav {% if pagina_ativa == 'quemsomos' %}ativo{% endif %}"
+            >Quem Somos</a
+          >
+        </nav>
+
+        <div class="icone-login" tabindex="0" role="button" aria-label="Entrar">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+            focusable="false"
+            class="w-6 h-6"
+          >
+            <path
+              d="M12 12c2.209 0 4-1.791 4-4s-1.791-4-4-4-4
+                     1.791-4 4 1.791 4 4 4zm0 2c-2.67 0-8
+                     1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"
+            />
+          </svg>
+          {% if conta %}
+          <p>Bem-vindo, {{ conta.nome.split(' ')[0] }}</p>
+          <a
+            href="#" data-logout
+            class="icone-login"
+            title="Sair"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="size-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9"
+              />
+            </svg>
+          </a>
+          {% else %}
+          <a href="{{ url_for('main.login') }}">Entrar</a>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+
+    <div id="cartOverlay" class="cart-overlay hidden" aria-hidden="true">
+      <div class="cart-container" role="dialog" aria-modal="true" aria-label="Seu carrinho">
+        <div id="cartContent" class="cart-content">Carregando...</div>
+      </div>
+    </div>
+
+    <main>{% block content %}{% endblock %}</main>
+
+    <footer class="footer-site">
+      <div class="footer-container">
+        <div class="footer-left">
+          <div class="footer-links">
+            <a
+              href="{{ url_for('static', filename='docs/terms.docx') }}"
+              download="Terms_and_Conditions.docx"
+            >
+              Terms &amp; Conditions
+            </a>
+            <a
+              href="{{ url_for('static', filename='docs/privacy.docx') }}"
+              download="Privacy_Policy.docx"
+            >
+              Privacy Policy
+            </a>
+          </div>
+          <div class="footer-copyright">
+            © 2025 Ponto do Cidadão — Orgulhosamente desde 2024
+          </div>
+        </div>
+
+        <div class="footer-right">
+          <nav class="footer-social" aria-label="Redes sociais">
+            <!-- Facebook -->
+            <a
+              href="https://www.facebook.com/people/Ponto-Cidad%C3%A3o/61576636672100/?mibextid=wwXIfr"
+              aria-label="facebook"
+              target="_blank" rel="noopener noreferrer"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M22 12.07C22 6.48 17.52 2 11.93 2 6.34 2 1.86 6.48 1.86 12.07c0 4.99 3.66 9.12 8.44 9.9v-7.01H8.2v-2.89h2.1V9.41c0-2.08 1.23-3.23 3.12-3.23.9 0 1.84.16 1.84.16v2.02h-1.04c-1.03 0-1.35.64-1.35 1.29v1.56h2.3l-.37 2.89h-1.93V22c4.78-.78 8.44-4.91 8.44-9.93z"
+                />
+              </svg>
+            </a>
+
+            <!-- Instagram -->
+            <a
+              href="https://www.instagram.com/p/DPT1nlUEf0V/?igsh=MWRtMmM2djRvZjF4aw=="
+              aria-label="instagram"
+              target="_blank" rel="noopener noreferrer"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm10 2c1.65 0 3 1.35 3 3v10c0 1.65-1.35 3-3 3H7c-1.65 0-3-1.35-3-3V7c0-1.65 1.35-3 3-3h10zm-5 3.5A5.5 5.5 0 1 0 17.5 13 5.5 5.5 0 0 0 12 7.5zm0 9A3.5 3.5 0 1 1 15.5 13 3.5 3.5 0 0 1 12 16.5zm4.75-9.88a1.12 1.12 0 1 1-1.12 1.12 1.12 1.12 0 0 1 1.12-1.12z"
+                />
+              </svg>
+            </a>
+
+            <!-- Twitter -->
+            <a
+              href="https://x.com/ponto_cidadao?t=liUhsUsgotYW603jypuMYA&s=08"
+              aria-label="twitter"
+              target="_blank" rel="noopener noreferrer"
+            >
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path
+                  d="M22 5.92c-.63.28-1.32.46-2.03.55.73-.44 1.29-1.14 1.55-1.98-.68.4-1.44.69-2.24.85-.64-.68-1.56-1.1-2.57-1.1-1.94 0-3.51 1.74-3.05 3.6C9.23 8.1 6.1 6.6 4.1 4.07c-.68 1.17-.33 2.66.84 3.42-.55-.02-1.06-.17-1.51-.42v.04c0 1.7 1.21 3.12 2.83 3.44-.5.14-1.02.17-1.56.06.44 1.37 1.73 2.36 3.25 2.39-1.26.99-2.86 1.58-4.59 1.58-.3 0-.6-.02-.89-.05 1.64 1.05 3.59 1.66 5.68 1.66 6.82 0 10.54-5.82 10.54-10.86 0-.17 0-.35-.01-.52.73-.52 1.36-1.17 1.86-1.91-.66.3-1.37.5-2.11.59z"
+                />
+              </svg>
+            </a>
+          </nav>
+        </div>
+      </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/api.js') }}"></script>
+<script src="{{ url_for('static', filename='js/cart.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/flash-mensage.js')}}"></script>
+    <script src="{{ url_for('static', filename='js/base.js') }}"></script>
+  <form id="logout-form" action="{{ url_for('main.logout') }}" method="post" hidden><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"></form>
+</body>
+</html>

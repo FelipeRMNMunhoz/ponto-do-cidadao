@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/doacoes.css') }}">
+<section class="hero" aria-labelledby="doacoes-title">
+  <div class="conteudo-hero">
+    <h1 id="doacoes-title">Doações</h1>
+    <p>Faça diferente, seja parte dessa mudança.</p>
+    <a href="#catalogo" class="botao-hero">Escolher itens</a>
+  </div>
+</section>
+<section class="container" id="catalogo" aria-labelledby="catalogo-title">
+  <h2 class="heading" id="catalogo-title">Escolha sua contribuição</h2>
+  <p class="subheading">Selecione os itens e as quantidades para montar seu carrinho.</p>
+  <p class="catalog-note">Catálogo demonstrativo. Nenhuma cobrança é realizada ao adicionar itens.</p>
+  <div class="grid">
+    {% for p in products %}
+    {% set available = p.stock > 0 and p.price_cents >= 0 %}
+    <article class="item">
+      <div class="photo-wrap">
+        {% if p.image_url %}<img src="{{ url_for('static', filename=p.image_url) }}" alt="{{ p.name }}" class="photo" loading="lazy">{% else %}<span>Imagem indisponível</span>{% endif %}
+      </div>
+      <h3 class="title">{{ p.name }}</h3>
+      <p class="desc">{{ p.description }}</p>
+      <div class="price">{{ p.price_cents|brl if p.price_cents >= 0 else 'Indisponível' }}</div>
+      <p class="stock-info">{{ 'Disponível: ' ~ p.stock if available else 'Item indisponível no momento' }}</p>
+      <form class="add-form" data-product-id="{{ p.id }}" method="post" action="{{ url_for('main.add_to_cart', product_id=p.id) }}">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <label for="quantity-{{ p.id }}">Quantidade</label>
+        <input id="quantity-{{ p.id }}" class="qty-input" name="quantity" type="number" value="1" min="1" max="{{ [p.stock,99]|min if available else 1 }}" step="1" required aria-label="Quantidade de {{ p.name }}" {% if not available %}disabled{% endif %}>
+        <button type="submit" class="btn-add" {% if not available %}disabled{% endif %}>{{ 'Adicionar ao carrinho' if available else 'Indisponível' }}</button>
+      </form>
+    </article>
+    {% else %}
+    <p class="catalog-empty">Não há itens disponíveis no momento. Consulte também nossos <a href="{{ url_for('main.projetos') }}">projetos</a>.</p>
+    {% endfor %}
+  </div>
+</section>
+<script src="{{ url_for('static', filename='js/doacoes.js') }}"></script>
+{% endblock %}

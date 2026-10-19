@@ -1,0 +1,257 @@
+{% extends "base.html" %} {% block content %}
+
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/home.css') }}"
+/>
+
+<section class="hero">
+  <div class="conteudo-hero">
+    <h1>Ponto do Cidadão</h1>
+    <p>Facilitar hoje para transformar o amanhã.</p>
+
+    <a href="https://www.vakinha.com.br/vaquinha/orfanato-na-africa?utm_internal_source=explore"
+      class="botao-hero" aria-label="Faça sua doação" target="_blank" rel="noopener noreferrer" rel="noopener noreferrer">
+      Faça sua colaboração
+    </a>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- Seção de Objetivo -->
+<!-- ============================================ -->
+<section class="section-goal" aria-label="Informações de objetivo">
+  <h2 class="section-title">Objetivo</h2>
+  <p class="section-text">
+    Ponto do Cidadão é mais que um projeto, é um movimento de solidariedade.
+    Nosso objetivo é oferecer apoio real e imediato a pessoas em situação de
+    vulnerabilidade, garantindo acesso a alimentos, cobertores e condições
+    básicas para viver com dignidade. Atuamos também no desenvolvimento de
+    projetos que incentivem a autonomia, gerem oportunidades e fortaleçam
+    comunidades, criando pontes entre quem pode ajudar e quem mais precisa.
+    Acreditamos que cada gesto, por menor que pareça, é capaz de transformar
+    vidas. No Ponto do Cidadão, trabalhamos todos os dias para que a esperança
+    chegue a cada esquina, e para que ninguém seja deixado para trás.
+  </p>
+</section>
+
+<!-- ============================================ -->
+<!-- Seção de Linha do Tempo / Histórico -->
+<!-- ============================================ -->
+<section
+  class="section-timeline"
+  aria-label="Linha do tempo de ações solidárias"
+>
+  <div class="timeline-item">
+    <div class="timeline-date">
+      2024-2025<br /><small>Uma mão por outra</small>
+    </div>
+    <div class="timeline-content">
+      <h3 class="timeline-title">
+        Ação Solidária em São José dos Campos: Marmitas e Cobertores para Mais
+        de 1.000 Pessoas
+      </h3>
+      <p class="timeline-text">
+        Entre 2008 e 2014, diversas ações solidárias em São José dos Campos
+        beneficiaram mais de 1.000 pessoas em situação de rua, oferecendo
+        marmitas e cobertores. Essas iniciativas, promovidas por organizações
+        como o Fundo Social de Solidariedade, visaram amenizar o sofrimento
+        durante os períodos mais frios do ano. Além disso, campanhas como a do
+        agasalho, realizadas anualmente, arrecadam cobertores novos ou seminovos
+        em bom estado para distribuição a quem mais precisa.
+      </p>
+      <p class="timeline-source">
+        Fonte:
+        <a
+          class="link-blue"
+          href="http://sjc.sp.gov.br/noticias/2025/junho/02/campanha-do-agasalho-foca-na-doacao-de-cobertores/"
+          target="_blank" rel="noopener noreferrer"
+        >
+          Prefeitura de São José dos Campos - Campanha do Agasalho foca na
+          doação de cobertores
+        </a>
+      </p>
+    </div>
+  </div>
+
+  <div class="timeline-item">
+    <div class="timeline-date">
+      2024-2025<br /><small>Mãos que iluminam</small>
+    </div>
+    <div class="timeline-content">
+      <h3 class="timeline-title">
+        Ação Solidária em Taubaté: Franklin Clinton Consegue Emprego
+      </h3>
+      <p class="timeline-text">
+        Entre 2012 e 2013, uma iniciativa em Taubaté ajudou Franklin Clinton,
+        uma pessoa em situação de rua, a se reintegrar ao mercado de trabalho.
+        Por meio do apoio de organizações locais e do Fundo Social de
+        Solidariedade, Franklin recebeu orientação profissional, ajuda na
+        elaboração de currículo e encaminhamento para entrevistas. A ação
+        resultou na contratação de Franklin, oferecendo a ele uma oportunidade
+        de estabilidade e dignidade, servindo como exemplo do impacto positivo
+        de projetos sociais voltados à inclusão laboral.
+      </p>
+      <p class="timeline-source">
+        Fonte:
+        <a
+          class="link-blue"
+          href="https://www.taubate.sp.gov.br/Erro?aspxerrorpath=/fundo-social-de-solidariedade"
+          target="_blank" rel="noopener noreferrer"
+        >
+          Prefeitura de Taubaté - Programas de Inclusão Social
+        </a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- Seção de Missão / Especialidades -->
+<!-- ============================================ -->
+<section class="section-mission" aria-label="Nossa missão e objetivos">
+  <h2 class="section-title">Nossa Missão</h2>
+  <div class="mission-cards">
+    <div class="mission-card">
+      <h3 class="mission-card-title">Objetivo de Ajudar Pessoas</h3>
+      <p class="mission-card-text">
+        Nosso principal objetivo é ajudar pessoas em situações de
+        vulnerabilidade, entendendo suas dificuldades e oferecendo apoio
+        concreto. Acreditamos que pequenas ações, como doações de alimentos,
+        roupas ou serviços, podem transformar vidas. Nossa missão vai além da
+        caridade: buscamos criar empatia, nos importar genuinamente com cada
+        indivíduo e construir relações humanas baseadas em respeito e
+        solidariedade.
+      </p>
+    </div>
+    <div class="mission-card">
+      <h3 class="mission-card-title">Empatia e Compreensão</h3>
+      <p class="mission-card-text">
+        A empatia é um dos pilares de nossa atuação, permitindo que
+        compreendamos a realidade de cada pessoa e respeitemos suas histórias.
+        Buscamos reconhecer os desafios individuais e oferecer apoio de forma
+        humana e acolhedora. Entender as dificuldades alheias nos ajuda a agir
+        com mais consciência, criando soluções que realmente fazem diferença e
+        fortalecendo laços de confiança e solidariedade.
+      </p>
+    </div>
+    <div class="mission-card">
+      <h3 class="mission-card-title">Ação Concreta e Solidariedade</h3>
+      <p class="mission-card-text">
+        Acreditamos que se importar vai além das palavras: é preciso agir. Por
+        isso, promovemos doações, campanhas sociais e projetos que auxiliam
+        diretamente quem precisa. Cada iniciativa é planejada para gerar impacto
+        real, respeitando a dignidade de cada indivíduo. Nosso compromisso com a
+        comunidade se traduz em ações concretas, mostrando que cuidado e atenção
+        podem transformar vidas.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- Seção de Carrossel de Vídeos -->
+<!-- ============================================ -->
+<section class="section-carousel" aria-label="Carrossel de vídeos">
+  <div class="carousel-wrapper">
+    <video class="carousel-video active" autoplay muted loop playsinline>
+      <source
+        src="../static/picture-movie/movie/video1.mp4"
+        type="video/mp4"
+      />
+      Seu navegador não suporta vídeos.
+    </video>
+    <video class="carousel-video" autoplay muted loop playsinline>
+      <source
+        src="../static/picture-movie/movie/video2.mp4"
+        type="video/mp4"
+      />
+      Seu navegador não suporta vídeos.
+    </video>
+    <video class="carousel-video" autoplay muted loop playsinline>
+      <source
+        src="../static/picture-movie/movie/video3.mp4"
+        type="video/mp4"
+      />
+      Seu navegador não suporta vídeos.
+    </video>
+
+    <div class="carousel-dots">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+      <span class="dot"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- Seção de Formulário de Contato -->
+<!-- ============================================ -->
+<section class="section-contact" aria-label="Formulário de contato">
+  <form action="/" method="POST" novalidate>
+<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %}
+    <div class="flash-messages">
+      {% for category, msg in messages %}
+      <div class="flash {{ category }}">{{ msg }}</div>
+      {% endfor %}
+    </div>
+    {% endif %} {% endwith %}
+
+    <div class="form-header">
+      <h2 class="form-title">Entre em contato conosco</h2>
+      <p class="form-description">
+        Se você quer colaborar no projeto, discutir ideias ou explorar
+        oportunidades, entre em contato! Será um prazer trocar experiências e
+        construir juntos.
+      </p>
+    </div>
+
+    <div class="form-grid-two-cols">
+      <div class="form-group">
+        <label for="firstName">Primeiro Nome *</label>
+        <input type="text" id="firstName" name="firstName" required />
+      </div>
+      <div class="form-group">
+        <label for="lastName">Segundo Nome *</label>
+        <input type="text" id="lastName" name="lastName" required />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="address">Empresa</label>
+      <input type="text" id="address" name="address" />
+    </div>
+
+    <div class="form-grid-two-cols">
+      <div class="form-group">
+        <label for="email">Email *</label>
+        <input type="email" id="email" name="email" required />
+      </div>
+      <div class="form-group">
+        <label for="phone">Telefone *</label>
+        <input type="tel" id="phone" name="phone" required />
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="subject">Objetivo</label>
+      <input type="text" id="subject" name="subject" />
+    </div>
+
+    <div class="form-group">
+      <label for="message">Digite sua mensagem aqui…</label>
+      <textarea id="message" name="message" rows="5"></textarea>
+    </div>
+
+    <div class="form-submit-wrapper">
+      <button type="submit" class="btn-submit">Enviar</button>
+    </div>
+  </form>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{{ url_for('static', filename='js/home.js') }}"></script>
+
+{% endblock %}

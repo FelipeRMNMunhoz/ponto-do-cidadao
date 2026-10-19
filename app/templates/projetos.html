@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/projetos.css') }}">
+<section class="projetos-section" aria-labelledby="projetos-title">
+  <div class="projetos-header">
+    <h1 id="projetos-title">Nossos projetos</h1>
+    <p>Conheça as iniciativas apresentadas pelo Ponto do Cidadão e suas formas de participação. Consulte os detalhes de cada campanha antes de contribuir.</p>
+  </div>
+  <div class="projetos-grid">
+    {% for id, projeto in projetos.items() %}
+    <a href="{{ url_for('main.projeto_detalhe', projeto_id=id) }}" class="projeto-item item{{ loop.index }}">
+      <img src="{{ url_for('static', filename=projeto.imagem) }}" alt="" loading="lazy">
+      <div class="projeto-caption">
+        <span class="projeto-status">{{ 'Campanha externa' if projeto.link else 'Em preparação' }}</span>
+        <h2>{{ projeto.titulo }}</h2>
+        <span class="projeto-action">Conhecer projeto <span aria-hidden="true">→</span></span>
+      </div>
+    </a>
+    {% endfor %}
+  </div>
+</section>
+{% endblock %}

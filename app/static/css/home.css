@@ -1,0 +1,456 @@
+/* ----------------------------- */
+/* Hero */
+
+.hero {
+  position: relative;
+  flex-grow: 1;
+  background-image: url("../picture-movie/img/home/banner-principal.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 1rem;
+  color: #fef4e6;
+  min-height: 68vh;
+  box-shadow: inset 0 0 0 1000px rgba(68, 46, 23, 0.467);
+}
+
+.conteudo-hero {
+  max-width: 470px;
+  text-shadow: 0 2px 8px rgb(0 0 0 / 0.46);
+}
+
+.conteudo-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.4rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.conteudo-hero p {
+  margin-bottom: 1.3rem;
+  font-size: 1rem;
+  font-weight: 400;
+  opacity: 0.85;
+}
+
+.botao-hero {
+  background-color: #fef4e6;
+  border: none;
+  padding: 0.48rem 1.25rem;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  color: #3b2e2e;
+  border-radius: 0.15rem;
+  transition: background-color 0.25s ease;
+  box-shadow: 0 0 8px rgb(0 0 0 / 0.3);
+}
+
+.botao-hero:hover {
+  background-color: #e7dac8;
+}
+
+/* --------------------------------------------*/
+/* Seção Objetivo */
+.section-goal {
+  max-width: 750px;
+  background-color: #fff5e9;
+  margin: -60px auto 3rem;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  position: relative;
+  z-index: 10;
+  color: #3b2e2e;
+  text-align: center;
+}
+
+.section-goal .section-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.1rem;
+}
+
+.section-goal .section-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #3b2e2e;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: justify;
+}
+
+/* --------------------------------------------*/
+/* Seção Linha do Tempo / Histórico */
+.section-timeline {
+  width: 90%;
+  max-width: 900px;
+  margin: 40px auto;
+  position: relative;
+}
+
+.section-timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  background: #3b2e2e;
+  transform: translateX(-50%);
+}
+
+.timeline-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 10px;
+  background: #3b2e2e;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.timeline-date {
+  width: 40%;
+  text-align: right;
+  padding-right: 20px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.timeline-content {
+  width: 40%;
+  text-align: left;
+}
+
+.timeline-title {
+  margin-bottom: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.timeline-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #3b2e2e;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: justify;
+}
+
+.timeline-source {
+  padding-top: 5px;
+}
+
+.link-blue {
+  color: #007bff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.link-blue:hover {
+  text-decoration: underline;
+  color: #0056b3;
+}
+
+/* Responsivo: Linha do tempo mobile */
+@media (max-width: 768px) {
+  .section-timeline::before {
+    left: 20px;
+  }
+
+  .timeline-item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 40px;
+  }
+
+  .timeline-item::before {
+    left: 20px;
+    transform: none;
+  }
+
+  .timeline-date,
+  .timeline-content {
+    width: 100%;
+    text-align: left;
+    padding-right: 0;
+    margin-bottom: 5px;
+  }
+}
+
+/* --------------------------------------------*/
+/* Seção Missão / Especialidades */
+.section-mission {
+  text-align: center;
+  padding: 50px 20px;
+}
+
+.section-mission .section-title {
+  font-size: 24px;
+  letter-spacing: 1px;
+  font-weight: bold;
+}
+
+.mission-cards {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.mission-card {
+  flex: 1 1 300px;
+  max-width: 300px;
+  text-align: left;
+}
+
+.mission-card-title {
+  margin-bottom: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.mission-card-text {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #3b2e2e;
+  max-width: 600px;
+  margin: 0 auto;
+  text-align: justify;
+}
+
+/* Responsivo: Missão coluna única para telas menores */
+@media (max-width: 768px) {
+  .mission-cards {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+/* --------------------------------------------*/
+/* Carrossel de Vídeos Responsivo */
+.section-carousel {
+  position: relative;
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 0 10px;
+  /* Espaço lateral para telas pequenas */
+}
+
+.carousel-wrapper video {
+  width: 100%;
+  height: auto;
+  max-height: 600px;
+  display: none;
+}
+
+.carousel-wrapper video.active {
+  display: block;
+}
+
+.carousel-dots {
+  text-align: center;
+  margin-top: 10px;
+}
+
+.dot {
+  height: 12px;
+  width: 12px;
+  margin: 0 5px;
+  background-color: #3b2e2e;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.dot.active {
+  background-color: #485f37;
+}
+
+@media (max-width: 768px) {
+  .carousel-wrapper video {
+    max-height: 300px;
+  }
+
+  .carousel-dots {
+    margin-top: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-wrapper video {
+    max-height: 200px;
+  }
+
+  .carousel-dots {
+    margin-top: 6px;
+  }
+}
+
+/* --------------------------------------------*/
+/* Seção Contato */
+.section-contact {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 64px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .section-contact {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0;
+  }
+}
+
+.section-contact form {
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.form-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.form-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #3b2e2e;
+}
+
+.form-description {
+  font-size: 1rem;
+  color: #3b2e2e;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.form-grid-two-cols {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem 1.5rem;
+  margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+  .form-grid-two-cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  border: 1px solid black;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+  outline: none;
+  transition: box-shadow 0.2s ease;
+  background-color: #fef4e6;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  box-shadow: 0 0 0 1px black;
+}
+
+textarea {
+  resize: none;
+  min-height: 120px;
+}
+
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
+.form-submit-wrapper {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-submit {
+  background-color: #3b2e2e;
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  border-radius: 0.125rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  border: none;
+  width: 100%;
+}
+
+.btn-submit:hover {
+  background-color: #322727;
+}
+
+/* --------------------------------------------*/
+/* SweetAlert Tema Escuro */
+.swal-dark-popup {
+  background-color: #1e1e1e !important;
+  color: white !important;
+}
+
+.swal-dark-title,
+.swal-dark-content {
+  color: white !important;
+}
+
+.swal-dark-btn {
+  background-color: #333 !important;
+  color: white !important;
+  border: none !important;
+}
+
+.swal-dark-btn:hover {
+  background-color: #555 !important;
+}
+
+.swal-dark-close-btn {
+  color: white !important;
+  font-size: 20px !important;
+  opacity: 0.8 !important;
+}
+
+.swal-dark-close-btn:hover {
+  opacity: 1 !important;
+}

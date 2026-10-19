@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/projetos.css') }}">
+<section class="projeto-detalhe">
+  <a href="{{ url_for('main.projetos') }}" class="voltar">← Voltar aos projetos</a>
+  <p class="detalhe-status">{{ 'Campanha externa' if projeto.link else 'Em preparação' }}</p>
+  <h1>{{ projeto.titulo }}</h1>
+  <p class="descricao">{{ projeto.descricao }}</p>
+  {% if projeto.link %}
+  <a href="{{ projeto.link }}" class="botao-doe" target="_blank" rel="noopener noreferrer">Visitar campanha <span aria-hidden="true">↗</span></a>
+  <p class="campaign-note">Você será direcionado ao site da campanha, em uma nova aba. Confira os responsáveis e as condições de participação nessa página.</p>
+  {% else %}
+  <p class="campaign-note">Esta iniciativa ainda não recebe contribuições.</p>
+  <a href="{{ url_for('main.projetos') }}" class="botao-doe">Ver outras iniciativas</a>
+  {% endif %}
+  <img class="imagem-projeto" src="{{ url_for('static', filename=projeto.imagem) }}" alt="Imagem de apresentação de {{ projeto.titulo }}">
+</section>
+{% endblock %}

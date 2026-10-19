@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/checkout.css') }}">
+<div class="checkout-container" id="checkout">
+  <section class="checkout-left" aria-labelledby="checkout-title">
+    <a href="{{ url_for('main.doacoes') }}#catalogo" class="back-link">← Continuar escolhendo</a>
+    <h1 class="checkout-title" id="checkout-title">Revise sua contribuição</h1>
+    {% for item in items %}
+    {% set limit = [item.product.stock,99]|min %}
+    <div class="checkout-item" data-id="{{ item.product.id }}" data-limit="{{ limit }}">
+      {% if item.product.image_url %}<img src="{{ url_for('static', filename=item.product.image_url) }}" alt="">{% endif %}
+      <div class="item-info">
+        <h2 class="item-name">{{ item.product.name }}</h2>
+        <p class="item-seller">{{ item.product.price_cents|brl }} por unidade</p>
+        <div class="item-qty-box">
+          <button type="button" class="qty-btn minus" aria-label="Diminuir quantidade de {{ item.product.name }}" {% if item.quantity <= 1 %}disabled{% endif %}>−</button>
+          <span class="qty-value">{{ item.quantity }}</span>
+          <button type="button" class="qty-btn plus" aria-label="Aumentar quantidade de {{ item.product.name }}" {% if item.quantity >= limit %}disabled{% endif %}>+</button>
+        </div>
+      </div>
+      <div class="item-price">{{ item.subtotal|brl }}</div>
+      <button type="button" class="remove-item" aria-label="Remover {{ item.product.name }}">×</button>
+    </div>
+    {% endfor %}
+  </section>
+  <aside class="checkout-right" aria-label="Resumo da contribuição">
+    <div class="summary-card">
+      <h2 class="summary-title">Resumo da contribuição</h2>
+      <div class="summary-line"><span>Subtotal</span><span id="subtotal-value">{{ total_cents|brl }}</span></div>
+      <div class="summary-total"><span>Total</span><span id="total-value" aria-live="polite">{{ total_cents|brl }}</span></div>
+      {% if payment_enabled %}
+      <button type="button" id="pay-btn" class="continue-btn">Continuar no ambiente de teste</button>
+      <p class="checkout-note">Você será direcionado ao ambiente de teste do Mercado Pago. Este protótipo não confirma doações.</p>
+      {% else %}
+      <p class="checkout-note">Esta é uma demonstração. O pagamento está desativado e nenhuma cobrança será realizada.</p>
+      <a href="{{ url_for('main.projetos') }}" class="continue-btn">Conhecer as campanhas</a>
+      {% endif %}
+    </div>
+  </aside>
+</div>
+<script src="{{ url_for('static', filename='js/checkout.js') }}"></script>
+{% endblock %}

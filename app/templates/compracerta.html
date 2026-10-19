@@ -1,0 +1,8 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container text-center mt-5">
+  <h2>Retorno do pagamento</h2>
+  <p>Acesse o provedor para consultar o status. Esta página não confirma a aprovação de uma contribuição.</p>
+  <a href="{{ url_for('main.doacoes') }}" class="btn btn-success mt-3">Voltar à loja</a>
+</div>
+{% endblock %}

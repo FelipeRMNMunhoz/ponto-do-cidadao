@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+
+:root {
+  --primary-color: #fef4e6;
+  --secondary-color: #1e1e1e;
+  --success-color: #28a745;
+  --error-color: #dc3545;
+  --shadow-color: rgba(0, 0, 0, 0.08);
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  margin: 0;
+  color: var(--secondary-color);
+}
+
+.container {
+  width: 100%;
+  max-width: 400px;
+  padding: 40px;
+  background-color: #fef4e6;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px var(--shadow-color);
+  text-align: center;
+}
+
+h1 {
+  font-weight: 600;
+  margin-bottom: 30px;
+  color: var(--secondary-color);
+}
+
+.form-group {
+  text-align: left;
+  margin-bottom: 25px;
+}
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 14px;
+  background-color: #fef4e6;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-sizing: border-box;
+  font-size: 16px;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--secondary-color);
+}
+
+button[type="submit"] {
+  width: 100%;
+  padding: 16px;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #333;
+}
+
+.flash-messages {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+.flash-messages li {
+  padding: 15px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+.flash-messages .success {
+  background-color: var(--success-color);
+  color: white;
+}
+
+.flash-messages .error {
+  background-color: var(--error-color);
+  color: white;
+}
+
+.links {
+  margin-top: 25px;
+}
+
+.links a {
+  color: var(--secondary-color);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.links a:hover {
+  text-decoration: underline;
+}

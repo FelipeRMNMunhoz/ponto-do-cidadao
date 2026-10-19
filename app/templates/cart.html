@@ -1,0 +1,37 @@
+<div id="cartSidebar" class="cart-sidebar">
+  <div class="cart-header">
+    <h2 id="cart-title">Carrinho ({{ cart_count }})</h2>
+    <button type="button" id="closeCart" aria-label="Fechar carrinho" class="close-cart">&times;</button>
+  </div>
+  <div class="cart-items">
+    {% for row in items %}
+    {% set limit = [row.product.stock,99]|min %}
+    <div class="cart-item" data-id="{{ row.product.id }}">
+      {% if row.product.image_url %}<img src="{{ url_for('static', filename=row.product.image_url) }}" alt="">{% endif %}
+      <div class="cart-info">
+        <p class="cart-name">{{ row.product.name }}</p>
+        <p class="cart-price">{{ row.product.price_cents|brl }} por unidade</p>
+        <form action="{{ url_for('main.update_cart') }}" method="POST">
+          <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+          <input type="hidden" name="product_id" value="{{ row.product.id }}">
+          <div class="qty-controls">
+            <button type="button" class="qty-btn minus" aria-label="Diminuir quantidade de {{ row.product.name }}" {% if row.quantity <= 1 %}disabled{% endif %}>−</button>
+            <input type="number" name="qty" aria-label="Quantidade de {{ row.product.name }}" value="{{ row.quantity }}" min="1" max="{{ limit }}" step="1" required>
+            <button type="button" class="qty-btn plus" aria-label="Aumentar quantidade de {{ row.product.name }}" {% if row.quantity >= limit %}disabled{% endif %}>+</button>
+          </div>
+        </form>
+        <p class="cart-line-total">Subtotal: {{ row.subtotal|brl }}</p>
+      </div>
+      <button type="button" class="remove-btn" data-id="{{ row.product.id }}" aria-label="Remover {{ row.product.name }}">×</button>
+    </div>
+    {% else %}
+    <div class="cart-empty"><p>Seu carrinho está vazio.</p><p>Escolha os itens com que deseja contribuir.</p><a href="{{ url_for('main.doacoes') }}#catalogo">Explorar catálogo</a></div>
+    {% endfor %}
+  </div>
+  {% if items %}
+  <div class="cart-footer">
+    <p>Total: <strong>{{ total_cents|brl }}</strong></p>
+    <a href="{{ url_for('main.checkout') }}" class="checkout-btn">Revisar contribuição</a>
+  </div>
+  {% endif %}
+</div>

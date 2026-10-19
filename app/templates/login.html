@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Ponto do Cidadão</title>
+
+    <!-- CSS do login -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/login.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/flash-mensage.css') }}"
+    />
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+</head>
+
+  <body>
+    <div class="container">
+      <h1>Entrar</h1>
+
+      <div id="flash-container"></div>
+
+      {% with messages = get_flashed_messages(with_categories=True) %} {% if
+      messages %} {% for category, message in messages %}
+      <div class="flash-message {{ category }}">{{ message }}</div>
+      {% endfor %} {% endif %} {% endwith %}
+
+      <form action="{{ url_for('main.login') }}" method="POST">
+<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+        <div class="form-group">
+          <label for="usuario">E-mail</label>
+          <input type="text" id="usuario" name="usuario" required />
+        </div>
+
+        <div class="form-group">
+          <label for="senha">Senha</label>
+          <input type="password" id="senha" name="senha" required />
+        </div>
+
+        <button type="submit">Acessar Conta</button>
+      </form>
+
+      <div class="links">
+        Ainda não tem uma conta?
+        <a href="{{ url_for('main.criarconta') }}">Cadastre-se</a>
+      </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/flash-mensage.js')}}"></script>
+  </body>
+</html>
